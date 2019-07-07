@@ -1,15 +1,14 @@
-import React from "react";
+import React, { Fragment } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Toggle from "./ToggleRPC";
+import Portal from "./Portal";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        {/* Toggle render props */}
-        {/* <Toggle
+      {/* Toggle render props */}
+      {/* <Toggle
           render={({ on, toggle }) => (
             <div>
               {on && <h1>Show me</h1>}
@@ -17,15 +16,15 @@ function App() {
             </div>
           )}
         /> */}
-        <Toggle>
-          {({ on, toggle }) => (
-            <div>
-              {on && <h1> Show/Hide this component</h1>}
-              <button onClick={toggle}> Show/Hide</button>
-            </div>
-          )}
-        </Toggle>
-      </header>
+      <Toggle>
+        {({ on, toggle }) => (
+          <Fragment>
+            {on && <h1> Show/Hide this component</h1>}
+            <button onClick={toggle}> Show/Hide</button>
+            <Portal>{on && <h1>This is a Portal</h1>}</Portal>
+          </Fragment>
+        )}
+      </Toggle>
     </div>
   );
 }
