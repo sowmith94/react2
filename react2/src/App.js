@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import Toggle from "./ToggleRPC";
 import Portal from "./Portal";
+import Modal from "./Modal";
 
 function App() {
   return (
@@ -16,12 +17,14 @@ function App() {
             </div>
           )}
         /> */}
+
       <Toggle>
         {({ on, toggle }) => (
           <Fragment>
-            {on && <h1> Show/Hide this component</h1>}
-            <button onClick={toggle}> Show/Hide</button>
-            <Portal>{on && <h1>This is a Portal</h1>}</Portal>
+            <button onClick={toggle}>Login Modal</button>
+            <Modal on={on} toggle={toggle}>
+              <h1>I'm living inside a Modal Component</h1>
+            </Modal>
           </Fragment>
         )}
       </Toggle>
